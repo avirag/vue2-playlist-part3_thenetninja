@@ -13,7 +13,7 @@
             <div id="form-controls">
                 <slot name="form-controls"></slot>
             </div>
-            
+
             <div id="useful-links">
                 <ul>
                     <li><a href="#">link 1</a></li>
@@ -71,7 +71,7 @@ form > div {
 }
 
 #form-header {
-    background: #ddd;
+    background: beige;
     border: 1px solid #bbb;
 }
 </style>

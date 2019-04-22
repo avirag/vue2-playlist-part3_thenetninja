@@ -2,6 +2,16 @@
   <div>
     <app-header :title="title" v-on:changeTitle="updateTitle($event)"></app-header>
 
+    <keep-alive>
+      <component :is="currentForm"></component>
+    </keep-alive>
+
+    <button v-on:click="currentForm = 'form-one'">Show Form One</button>
+    <button v-on:click="currentForm = 'form-two'">Show Form Two</button>
+
+    <!-- <form-one></form-one>
+    <form-two></form-two> -->
+
     <form-helper>
       <div slot="form-header">
         <h3>This is the title of the form</h3>
@@ -28,13 +38,17 @@ import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Ninjas from './components/Ninjas.vue';
 import formHelper from './components/formHelper.vue';
+import formOne from './components/formOne.vue';
+import formTwo from './components/formTwo.vue';
 
 export default {
   components: {
     'app-header': Header,
     'app-footer': Footer,
     'app-ninjas': Ninjas,
-    'form-helper': formHelper
+    'form-helper': formHelper,
+    'form-one': formOne,
+    'form-two': formTwo
   },
   data () {
     return {
@@ -46,12 +60,16 @@ export default {
         {name: 'Kami', speciality: 'Webpack', show: false},
         {name: 'Yoshi', speciality: 'Data Diggin', show: false}
       ],
-      title: 'Vue Ninjas'
+      title: 'Vue Ninjas',
+      currentForm: 'form-one'
     }
   },
   methods: {
     updateTitle: function(updatedTitle) {
       this.title = updatedTitle;
+    },
+    handleSubmit: function(){
+        alert('submit');
     }
   }
 }
